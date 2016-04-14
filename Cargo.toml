@@ -2,5 +2,8 @@
 name = "purple"
 version = "0.1.0"
 authors = ["Jack Coulter <jscinoz@jscinoz.so>"]
+build = "build.rs"
 
-[dependencies]
+[build-dependencies]
+clippy = "*"
+bindgen = { git = "https://github.com/crabtw/rust-bindgen.git" }
