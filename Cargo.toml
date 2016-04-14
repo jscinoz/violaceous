@@ -1,0 +1,6 @@
+[package]
+name = "purple"
+version = "0.1.0"
+authors = ["Jack Coulter <jscinoz@jscinoz.so>"]
+
+[dependencies]
