@@ -5,5 +5,6 @@ authors = ["Jack Coulter <jscinoz@jscinoz.so>"]
 build = "build.rs"
 
 [build-dependencies]
+pkg-config = "*"
 clippy = "*"
 bindgen = { git = "https://github.com/crabtw/rust-bindgen.git" }
