@@ -31,8 +31,7 @@ fn main() {
     }
 
     bindings.forbid_unknown_types();
-    bindings.emit_builtins();
-
+//    bindings.emit_builtins();
     // Only generate bindings for things under libpurple. Otherwise we end up
     // generating bindings for glib too
     // XXX: Can't currently do this. Tried linking with glib-sys, but couldn't end up getting it

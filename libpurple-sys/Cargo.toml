@@ -13,4 +13,7 @@ clippy = "*"
 bindgen = { path = "../rust-bindgen" }
 
 [dependencies]
+libc = "*"
+va_list = "*"
 glib-sys = { git = "https://github.com/gtk-rs/sys.git" }
+gobject-sys = { git = "https://github.com/gtk-rs/sys.git" }
