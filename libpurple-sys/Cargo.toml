@@ -11,3 +11,6 @@ pkg-config = "*"
 clippy = "*"
 #bindgen = { git = "https://github.com/crabtw/rust-bindgen.git" }
 bindgen = { path = "../rust-bindgen" }
+
+[dependencies]
+glib-sys = { git = "https://github.com/gtk-rs/sys.git" }
