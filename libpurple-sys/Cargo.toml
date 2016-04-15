@@ -9,6 +9,7 @@ links = "purple"
 [build-dependencies]
 pkg-config = "*"
 clippy = "*"
+syntex_syntax = "*"
 #bindgen = { git = "https://github.com/crabtw/rust-bindgen.git" }
 bindgen = { path = "../rust-bindgen" }
 

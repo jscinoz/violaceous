@@ -1,11 +1,15 @@
 #![feature(plugin)]
 #![plugin(clippy)]
 
+extern crate syntex_syntax as syntax;
 extern crate bindgen;
 extern crate pkg_config;
 
+use syntax::ast;
 use std::path::{Path};
 use std::env;
+
+
 
 fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
@@ -48,7 +52,9 @@ fn main() {
     
     match bindings {
         Ok(bindings) => {
-            bindings.write_to_file(out_file).unwrap();
+            //bindings.write_to_file(out_file).unwrap();
+            let ast = bindings.into_ast();
+            // TODO: Remove copy from some things
         }
         _ => panic!("Bindings generation failed")
     }
