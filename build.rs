@@ -32,13 +32,18 @@ fn main() {
 
     bindings.forbid_unknown_types();
     bindings.emit_builtins();
+
     // Only generate bindings for things under libpurple. Otherwise we end up
     // generating bindings for glib too
-    bindings.match_pat("libpurple");
+    // XXX: Can't currently do this. Tried linking with glib-sys, but couldn't end up getting it
+    // to build
+    //bindings.match_pat("libpurple");
 
-    // Not going to be very useful without linking to libpurple...
-    bindings.link("purple");
-//    bindings.derive_debug();
+    // XXX: Do we need to do this, or is the `links` entry in Cargo.toml sufficient?
+    // bindings.link("purple");
+
+    // Don't derive debug - causes output bindings not to be compilable
+    bindings.derive_debug(false);
 
     let bindings = bindings.generate();
     
