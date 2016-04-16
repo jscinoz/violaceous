@@ -28,7 +28,7 @@ impl UiOps {
 impl Default for UiOps {
     fn default() -> Self {
         UiOps {
-            raw: &mut purple::PurpleCoreUiOps {
+            raw: Box::into_raw(Box::new(purple::PurpleCoreUiOps {
                 ui_prefs_init: None,
                 debug_ui_init: None,
                 ui_init: None,
@@ -39,7 +39,7 @@ impl Default for UiOps {
                 _purple_reserved1: None,
                 _purple_reserved2: None,
                 _purple_reserved3: None,
-            }
+            }))
         }
     }
 }
