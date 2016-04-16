@@ -6,19 +6,19 @@ pub trait IsNull {
 }
 
 pub trait Binding : Sized  {
-    type NativeType;
+    type Raw;
 
-    // Should be Self::NativeType?
-    fn from_native(native: Self::NativeType) -> Self;
-    fn to_native(&self) -> Self::NativeType;
+    // Should be Self::Raw?
+    fn from_raw(raw: Self::Raw) -> Self;
+    fn to_raw(&self) -> Self::Raw;
 
-    fn from_native_opt<T>(native: T) -> Option<Self>
-        where T: Copy + IsNull, Self: Binding<NativeType=T>
+    fn from_raw_opt<T>(raw: T) -> Option<Self>
+        where T: Copy + IsNull, Self: Binding<Raw=T>
     {
-        if native.is_ptr_null() {
+        if raw.is_ptr_null() {
             None
         } else {
-            Some(Self::from_native(native))
+            Some(Self::from_raw(raw))
         }
     }
 }

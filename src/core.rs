@@ -7,8 +7,9 @@ pub struct UiOps {
     raw: *mut purple::PurpleCoreUiOps,
 }
 
-// Do we need this?
+// TODO: Add methods to register callbacks on UiOps
 /*
+// OLD: probably not needed.
 impl UiOps {
     fn ui_prefs_init(&self) {
         unsafe {
@@ -53,20 +54,20 @@ impl Drop for UiOps {
 */
 
 impl Binding for UiOps {
-    type NativeType = *mut purple::PurpleCoreUiOps;
+    type Raw = *mut purple::PurpleCoreUiOps;
 
-    fn from_native(native: Self::NativeType) -> Self {
-        UiOps { raw: native }
+    fn from_raw(raw: Self::Raw) -> Self {
+        UiOps { raw: raw }
     }
 
-    fn to_native(&self) -> Self::NativeType {
+    fn to_raw(&self) -> Self::Raw {
         self.raw
     }
 }
 
 pub fn set_ui_ops(ui_ops: UiOps) {
     unsafe {
-        purple::purple_core_set_ui_ops(ui_ops.to_native());
+        purple::purple_core_set_ui_ops(ui_ops.to_raw());
     }
 }
 
