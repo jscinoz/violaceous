@@ -1,0 +1,13 @@
+[package]
+name = "purple-sys"
+version = "0.1.0"
+authors = ["Jack Coulter <jscinoz@jscinoz.so>"]
+keywords = ["pidgin", "purple", "libpurple"]
+build = "build.rs"
+links = "purple"
+
+[build-dependencies]
+pkg-config = "*"
+clippy = "*"
+#bindgen = { git = "https://github.com/crabtw/rust-bindgen.git" }
+bindgen = { path = "../rust-bindgen" }
