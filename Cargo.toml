@@ -3,8 +3,6 @@ name = "violaceous"
 version = "0.1.0"
 authors = ["Jack Coulter <jscinoz@jscinoz.so>"]
 
-[dependencies.bindgen_plugin]
-git = "https://github.com/crabtw/rust-bindgen.git"
-
-#[dependencies.purple]
-#path = "../rust-purple"
+[dependencies]
+clippy = "*"
+libpurple-sys = { path = "libpurple-sys" }

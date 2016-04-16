@@ -1,4 +1,5 @@
-extern crate purple;
+#![feature(plugin)]
+#![plugin(clippy)]
 
 #[cfg(test)]
 mod tests {
