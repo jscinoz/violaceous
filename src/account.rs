@@ -1,4 +1,4 @@
-extern crate purple_sys;
+extern crate libpurple_sys as purple;
 
 use std::ffi::CString;
 
@@ -15,8 +15,8 @@ pub struct PurpleAccount {
     // TODO: Other fields from native struct
 }
 
-impl From<*mut purple_sys::PurpleAccount> for PurpleAccount {
-    fn from(account: *mut purple_sys::PurpleAccount) -> Self {
+impl From<*mut purple::PurpleAccount> for PurpleAccount {
+    fn from(account: *mut purple::PurpleAccount) -> Self {
         unsafe {
             let account = *account;
 
@@ -29,8 +29,8 @@ impl From<*mut purple_sys::PurpleAccount> for PurpleAccount {
 }
 
 /*
-impl Into<*mut purple_sys::PurpleAccount> for PurpleAccount {
-    fn into(self) -> *mut purple_sys::PurpleAccount {
+impl Into<*mut purple::PurpleAccount> for PurpleAccount {
+    fn into(self) -> *mut purple::PurpleAccount {
 
     }
 }
@@ -42,7 +42,7 @@ impl PurpleAccount {
         let protocol_id = CString::new(protocol_id).unwrap();
 
         unsafe {
-            let account = purple_sys::purple_account_new(
+            let account = purple::purple_account_new(
                 username.into_raw(), protocol_id.into_raw());
 
             Self::from(account)
