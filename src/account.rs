@@ -50,12 +50,13 @@ impl PurpleAccount {
     }
 }
 
+/*
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
+    fn create_account() {
         let expected_username = "jscinoz@jscinoz.so";
         let expected_protocol_id = "jabber";
         let PurpleAccount { username, protocol_id, .. } =
@@ -65,3 +66,4 @@ mod tests {
         assert_eq!(expected_protocol_id, protocol_id);
     }
 }
+*/
