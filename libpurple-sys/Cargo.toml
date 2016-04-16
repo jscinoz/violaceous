@@ -9,8 +9,9 @@ links = "purple"
 [build-dependencies]
 pkg-config = "*"
 clippy = "*"
+gir = { git = "https://github.com/gtk-rs/gir.git" }
 #bindgen = { git = "https://github.com/crabtw/rust-bindgen.git" }
-bindgen = { path = "../rust-bindgen" }
+#bindgen = { path = "../rust-bindgen" }
 
 [dependencies]
 libc = "*"
