@@ -3,7 +3,7 @@ extern crate libpurple_sys as purple;
 use std::os::raw::c_int;
 use self::purple::{guint, gpointer, GSourceFunc};
 
-use util::Binding;
+use ffiutil::Binding;
 
 // XXX: Do we have function members here, or provide them on an impl?
 pub struct UiOps {

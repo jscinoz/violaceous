@@ -2,7 +2,7 @@ extern crate libpurple_sys as purple;
 
 use eventloop;
 
-use util::Binding;
+use ffiutil::Binding;
 use std::ffi::CString;
 
 pub struct UiOps {
