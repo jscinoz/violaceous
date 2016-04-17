@@ -87,6 +87,10 @@ pub fn set_ui_ops(ui_ops: UiOps) {
     }
 }
 
+// TODO: We should probably handle setting the required UiOps internally, with
+// default implementations that dispatch to user callbacks that can be later
+// registered. Right now, calling this without calling both core::set_ui_ops and
+// eventloop::set_ui_ops without appropriate values will segfault
 pub fn init<S: Into<Vec<u8>>>(ui_name: S) -> bool {
     let ui_name = CString::new(ui_name).unwrap();
 
