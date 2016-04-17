@@ -10,7 +10,8 @@ pub trait Binding : Sized  {
 
     // Should be Self::Raw?
     fn from_raw(raw: Self::Raw) -> Self;
-    fn to_raw(&self) -> Self::Raw;
+    // Consumes self
+    fn to_raw(self) -> Self::Raw;
 
     fn from_raw_opt<T>(raw: T) -> Option<Self>
         where T: Copy + IsNull, Self: Binding<Raw=T>

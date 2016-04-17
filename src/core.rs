@@ -1,5 +1,7 @@
 extern crate libpurple_sys as purple;
 
+use eventloop;
+
 use util::Binding;
 use std::ffi::CString;
 
@@ -53,6 +55,20 @@ impl Drop for UiOps {
 }
 */
 
+/*
+impl From<*mut purple::PurpleCoreUiOps> for UiOps {
+    fn from(raw: *mut purple::PurpleCoreUiOps) -> Self {
+        UiOps { raw: raw }
+    }
+}
+
+impl Into<*mut purple::PurpleCoreUiOps> for UiOps {
+    fn into(self) -> *mut purple::PurpleCoreUiOps {
+        self.raw
+    }
+}
+*/
+
 impl Binding for UiOps {
     type Raw = *mut purple::PurpleCoreUiOps;
 
@@ -60,7 +76,7 @@ impl Binding for UiOps {
         UiOps { raw: raw }
     }
 
-    fn to_raw(&self) -> Self::Raw {
+    fn to_raw(self) -> Self::Raw {
         self.raw
     }
 }
@@ -92,18 +108,18 @@ pub fn set_ui_ops(
 mod tests {
     use super::*;
 
-    /*
     #[test]
     fn set_ui_ops_works() {
-        // Shouldn't panic or otherwise crash
+        // Shouldn't segfault
         set_ui_ops(UiOps::default());
     }
-    */
 
     #[test]
     fn init_works() {
         // ui_ops must be set before init is called
         set_ui_ops(UiOps::default());
+        // Same goes for eventloop_ui_ops
+        //eventloop::set_ui_ops(eventloop::UiOps::default());
 
         let result = init("Violaceous");
 
