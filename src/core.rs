@@ -100,26 +100,36 @@ pub fn init<S: Into<Vec<u8>>>(ui_name: S) -> bool {
 
     false
 }
-/*
-pub fn set_ui_ops(
-*/
 
 #[cfg(test)]
 mod tests {
+    use std::path::Path;
+    use std::env;
+
     use super::*;
+    use eventloop;
+    use util;
 
     #[test]
-    fn set_ui_ops_works() {
+    fn can_set_ui_ops() {
         // Shouldn't segfault
         set_ui_ops(UiOps::default());
     }
 
     #[test]
     fn init_works() {
+        // Need to set a temp user directory so libpurple doesn't use the user's
+        // real direcctory (~/.purple)
+        let out_dir = env::var("OUT_DIR").unwrap();
+        let tmp_user_dir = Path::new(&out_dir).join("purple-user-dir");
+
+        // Shouldn't segfault
+        util::set_user_dir(&tmp_user_dir);
+
         // ui_ops must be set before init is called
         set_ui_ops(UiOps::default());
         // Same goes for eventloop_ui_ops
-        //eventloop::set_ui_ops(eventloop::UiOps::default());
+        eventloop::set_ui_ops(eventloop::UiOps::default());
 
         let result = init("Violaceous");
 
